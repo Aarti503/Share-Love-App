@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background"
+    tools:context=".DashboardFragment">
+
+
+    <TextView
+        android:id="@+id/txtHeaderlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="80dp"
+        android:text="Welcome"
+        android:textColor="#ffffff"
+        android:textSize="50dp"
+        android:textStyle="bold"
+
+        />
+
+    <TextView
+        android:id="@+id/txtSubHeaderlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Here to help?"
+        android:textSize="20dp"
+        android:textColor="#ffffff"
+        android:textStyle="normal"
+        android:layout_marginLeft="40dp"
+        />
+    <TextView
+        android:id="@+id/txtSubHeaderlayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Start your journey with us.."
+        android:textSize="20dp"
+        android:textColor="#ffffff"
+        android:textStyle="normal"
+        android:layout_marginLeft="40dp"
+        />
+
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/oval"
+        android:text="Login"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtregister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Don't have an account?"
+        android:textSize="20dp"
+        android:layout_marginTop="40dp"
+        android:textColor="#ffffff"
+        android:textStyle="normal"
+        android:layout_marginLeft="40dp"
+
+        />
+    <TextView
+        android:id="@+id/txtSubregister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register Now"
+        android:textSize="20dp"
+        android:textColor="#F20B4A"
+        android:textStyle="bold"
+        android:layout_marginLeft="40dp"
+        />
+
+</LinearLayout>

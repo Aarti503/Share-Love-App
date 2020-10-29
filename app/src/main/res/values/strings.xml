@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">Share Love</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="login">Login</string>
+    <string name="signup">Sign Up</string>
+    <string name="aboutus">About Us</string>
+    <string name="drawer">Share Love</string>
+    <string name="opendrawer">OpenDrawer</string>
+    <string name="closedrawer">CloseDrawer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank Fragment</string>
+    <string name="Login_Fragment">Login_Fragment</string>
+    <string name="Sign_in">Sign_In</string>
+    <string name="about_us_fragment">About_Us_fragment</string>
+    <string name="thanku">Thank You :)</string>
+    <string name="edittext_hint_phone"><font size="15">Enter Your Phone Number</font></string>
+    <string name="edittext_hint_namesign"><font size="15">Enter Your Name</font></string>
+    <string name="edittext_hint_password"><font size="15">Enter Your Password</font></string>
+    <string name="edittext_hint_emailsign"><font size="15">Enter Your Email Id</font></string>
+    <string name="signinas"><font size="15"> Donator / Receiver</font></string>
+    <string name="edittext_hint_name"><font size="20">Full Name</font></string>
+    <string name="edittext_hint_password_signin"><font size="20">Enter Your Password</font></string>
+    <string name="read">Read</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign Up</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="newuser">New User ?</string>
+    <string name="signinnow">Sign In Now</string>
+    <string name="title_activity_sharelove_maps">Map</string>
+    <string name="title_activity_maps">Map Current Location</string>
+    <string name="nameerror">Enter a valid name</string>
+    <string name="emailerror">Enter a valid email</string>
+    <string name="mobileerror">Enter a valid Phone Number</string>
+    <string name="donarec">Enter either Donator or Receiver </string>
+    <string name="ageerror">Enter a valid age</string>
+
+</resources>
