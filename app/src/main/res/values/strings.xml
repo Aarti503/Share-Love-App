@@ -7,12 +7,10 @@
     <string name="drawer">Share Love</string>
     <string name="opendrawer">OpenDrawer</string>
     <string name="closedrawer">CloseDrawer</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank Fragment</string>
     <string name="Login_Fragment">Login_Fragment</string>
-    <string name="Sign_in">Sign_In</string>
+    <string name="Sign_in">Sign Up</string>
     <string name="about_us_fragment">About_Us_fragment</string>
-    <string name="thanku">Thank You :)</string>
     <string name="edittext_hint_phone"><font size="15">Enter Your Phone Number</font></string>
     <string name="edittext_hint_namesign"><font size="15">Enter Your Name</font></string>
     <string name="edittext_hint_password"><font size="15">Enter Your Password</font></string>
@@ -30,14 +28,14 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
-    <string name="newuser">New User ?</string>
+    <string name="newUser">New User ?</string>
     <string name="signinnow">Sign In Now</string>
-    <string name="title_activity_sharelove_maps">Map</string>
-    <string name="title_activity_maps">Map Current Location</string>
     <string name="nameerror">Enter a valid name</string>
     <string name="emailerror">Enter a valid email</string>
     <string name="mobileerror">Enter a valid Phone Number</string>
     <string name="donarec">Enter either Donator or Receiver </string>
     <string name="ageerror">Enter a valid age</string>
+    <string name="channel_name">com.example.sharelove.activity</string>
+    <string name="channel_description">Android Notification</string>
 
 </resources>

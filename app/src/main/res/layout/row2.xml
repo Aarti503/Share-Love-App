@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="3dp"
+    app:cardBackgroundColor="@color/whiteColor"
+    app:cardCornerRadius="3dp"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="390dp"
+        android:layout_margin="5dp"
+        android:gravity="end|bottom"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ID :"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            >
+        </TextView>
+        <TextView
+            android:id="@+id/tvTitleName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name :"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            >
+        </TextView>
+        <TextView
+            android:id="@+id/tvType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Type :"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            >
+        </TextView>
+        <TextView
+            android:id="@+id/tvDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Decription :"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            >
+        </TextView>
+        <Button
+            android:id="@+id/btnViewDetails"
+            android:layout_width="150dp"
+            android:layout_marginRight="30dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorAccent"
+            android:background="@drawable/oval2"
+            android:text="View Details"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

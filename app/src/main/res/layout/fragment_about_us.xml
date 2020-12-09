@@ -3,20 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AboutUsFragment"
-    android:background="@drawable/aboutus"
-    >
-
+    tools:context=".fragment.AboutUsFragment"
+    android:background="@drawable/aboutusnew"
+  >
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="210dp"
-        android:textStyle="normal"
-        android:textSize="25sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_marginLeft="35dp"
-        />
-
-
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="40dp"
+        android:text="We are here to serve nation wih our world class service.We started an initiative to
+connect people with each other who are in need of food, clothes or books, to the people can help them.
+By Our App, we are trying to reach each and every person who needs help any kind of help.
+Using this app people can save a large amount of food amd others things by donating them who need them."
+        android:textColor="@color/black"
+        android:textSize="23sp"
+        android:textStyle="normal" />
 </RelativeLayout>

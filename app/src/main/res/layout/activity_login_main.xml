@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+        tools:context=".activity.LoginMainActivity"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="Donations"
+        android:background="@color/colorAccent"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/Base.Theme.AppCompat.Light.DarkActionBar" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            app:cardCornerRadius="3dp"
+            app:cardElevation="3dp"
+            android:layout_margin="5dp"
+            app:cardBackgroundColor="@color/whiteColor"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <RadioGroup
+                    android:id="@+id/radioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:id="@+id/radio_food"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/button_selectorcolor"
+                        android:onClick="onRadioButtonClicked"
+                        android:textStyle="bold"
+                        android:text="Food"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+                    <RadioButton
+                        android:id="@+id/radio_others"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/button_selectorcolor"
+                        android:onClick="onRadioButtonClicked"
+                        android:textStyle="bold"
+                        android:text="Others"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                </RadioGroup>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/edID"
+                    android:background="@null"
+                    android:hint="Enter Your ID"
+                    android:singleLine="true"
+                    android:padding="10dp"
+                    android:textStyle="bold"
+                    >
+
+                </EditText>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/edTitle"
+                    android:background="@null"
+                    android:hint="Enter Your Name"
+                    android:singleLine="true"
+                    android:padding="10dp"
+                    android:textStyle="bold"
+                    >
+
+                </EditText>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/edDescription"
+                    android:background="@null"
+                    android:minHeight="100dp"
+                    android:hint="Enter Description About Donation"
+                    android:singleLine="true"
+                    android:padding="10dp"
+                    android:textStyle="bold"
+                    >
+
+                </EditText>
+
+
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end"
+            >
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonAddDonation"
+                android:background="@color/colorAccent"
+                android:text="Add"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:onClick="saveRecord"
+                android:layout_gravity="center"
+                ></Button>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                android:text="View Donations"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:onClick="viewRecord"
+                android:layout_gravity="center"
+                ></Button>
+            <ImageButton
+                android:id="@+id/ibEdit"
+                android:background="@null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:onClick="updateRecord"
+                android:src="@drawable/edit_foreground"
+                >
+            </ImageButton>
+            <ImageButton
+                android:id="@+id/ibDelete"
+                android:background="@null"
+                android:onClick="deleteRecord"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/delete_foreground"
+                >
+            </ImageButton>
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="350sp"
+        android:backgroundTint="@color/button_selectorcolor"
+        android:layout_marginTop="20sp">
+        <ListView
+            android:id="@+id/lvDonation"
+            android:layout_width="match_parent"
+            android:layout_height="350sp"/>
+    </LinearLayout>
+</LinearLayout>
+

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/background"
-    tools:context=".DashboardFragment">
+    tools:context=".fragment.DashboardFragment">
 
 
     <TextView
@@ -44,7 +44,7 @@
 
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnLoginDashBoard"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
@@ -68,7 +68,7 @@
 
         />
     <TextView
-        android:id="@+id/txtSubregister"
+        android:id="@+id/txtSubregisterDashBoard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Register Now"

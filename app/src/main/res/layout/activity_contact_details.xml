@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.ContactDetails">
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:id="@+id/toolbar5"
+        app:title="Contact Details"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/colorPrimaryDarkBlack"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp">
+
+        <TextView
+            android:id="@+id/userNameDes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="Name of the User: Aarti"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/userContact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/userNameDes"
+            android:padding="8dp"
+            android:text="Contact Details: 77777777777"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/userAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/userContact"
+            android:padding="8dp"
+            android:text="Address: Gopal Nagar, Najafgarh, New Delhi, 43"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/userdescription"
+            android:layout_width="match_parent"
+            android:textStyle="bold"
+            android:layout_height="320dp"
+            android:layout_below="@+id/userAddress"
+            android:padding="8dp"
+            android:text="Description: Food from Nirman Vihar"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/button_call"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="28dp"
+        android:layout_marginBottom="46dp"
+        android:clickable="true"
+        android:src="@drawable/phone"
+        android:tint="@color/colorPrimaryDark" />
+
+
+    </RelativeLayout>

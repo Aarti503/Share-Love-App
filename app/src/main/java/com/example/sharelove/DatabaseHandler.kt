@@ -6,13 +6,17 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
+import com.example.sharelove.model.Model
+import com.example.sharelove.model.Model.UserClass
+import java.util.*
 
-class DatabaseHandler(context: Context):
-        SQLiteOpenHelper(context, DATABASE_NAME,null,DATABASE_VERSION) {
+class DatabaseHandler(context: Context?) :
+    SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     companion object {
-        private const val DATABASE_VERSION = 1
-        private const val DATABASE_NAME = "userDetails"
-        private const val TABLE_USER_DATA = "USERDATA"
+        private const val DATABASE_VERSION = 11
+        private const val DATABASE_NAME = "UserData"
+        private const val TABLE_USER_DATA = "UserData"
+        private const val TABLE_DONATION = "DonationData"
         private const val KEY_ID = "_id"
         private const val KEY_NAME = "name"
         private const val KEY_EMAIL = "email"
@@ -24,29 +28,124 @@ class DatabaseHandler(context: Context):
         private const val KEY_STATE = "state"
         private const val KEY_COUNTRY = "country"
         private const val KEY_PINCODE = "pincode"
+        //Donation Table
+        private const val KEY_DONATIONID = "donationIdINTEGER"
+        private const val KEY_DONATORNAME = "donatorName"
+        private const val KEY_DONATION_TYPE = "donationTypeTEXT"
+        private const val KEY_DONATIONDESCRIPTION = "donationDescription"
+
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
-        //creating table with fields
-        val CREATE_TABLE_USER = ("CREATE TABLE " + TABLE_USER_DATA + "("
+        val CREATE_CONTACTS_TABLE = ("CREATE TABLE " + TABLE_USER_DATA + "("
                 + KEY_ID + " INTEGER PRIMARY KEY,"
                 + KEY_NAME + " TEXT,"
                 + KEY_EMAIL + " TEXT,"
                 + KEY_PASS + " TEXT,"
-                + KEY_PHONE + " INTEGER,"
+                + KEY_PHONE + " TEXT,"
                 + KEY_USER + " TEXT,"
                 + KEY_ADDRESS + " TEXT,"
                 + KEY_CITY + " TEXT,"
                 + KEY_STATE + " TEXT,"
                 + KEY_COUNTRY + " TEXT,"
-                + KEY_PINCODE + " INTEGER" + ")")
-        db?.execSQL(CREATE_TABLE_USER)
+                + KEY_PINCODE + " TEXT"
+                + ")")
+        val CREATE_DONATION_TABLE =
+            ("""CREATE TABLE $TABLE_DONATION($KEY_DONATIONID INTEGER PRIMARY KEY,$KEY_DONATORNAME TEXT,$KEY_DONATION_TYPE TEXT,$KEY_DONATIONDESCRIPTION TEXT)""")
+
+        db?.execSQL(CREATE_CONTACTS_TABLE)
+        db?.execSQL(CREATE_DONATION_TABLE)
+
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         db!!.execSQL("DROP TABLE IF EXISTS $TABLE_USER_DATA")
+        db!!.execSQL("DROP TABLE IF EXISTS $TABLE_DONATION")
         onCreate(db)
     }
+
+    //method to insert data
+    fun addDonation(donation: Model.Donation): Long {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put(KEY_DONATIONID, donation.donationId)
+        contentValues.put(KEY_DONATORNAME, donation.donatorName)
+        contentValues.put(KEY_DONATION_TYPE, donation.donationType) // EmpModelClass Name
+        contentValues.put(
+            KEY_DONATIONDESCRIPTION,
+            donation.donationDescription
+        )
+        val success = db.insert(TABLE_DONATION, null, contentValues)
+        db.close()
+        return success
+    }
+
+    //method to read data
+    fun viewDonations(): List<Model.Donation> {
+        val donationList: ArrayList<Model.Donation> = ArrayList<Model.Donation>()
+        val selectQuery = "SELECT  * FROM $TABLE_DONATION"
+        val db = this.readableDatabase
+        var cursor: Cursor? = null
+        try {
+            cursor = db.rawQuery(selectQuery, null)
+        } catch (e: SQLiteException) {
+            db.execSQL(selectQuery)
+            return ArrayList()
+        }
+        var donationId: Int
+        var donatorName: String
+        var donationType: String
+        var donationDescription: String
+        if (cursor.moveToFirst()) {
+            do {
+                donationId = cursor.getInt(cursor.getColumnIndex("donationIdINTEGER"))
+                donatorName = cursor.getString(cursor.getColumnIndex("donatorName"))
+                donationType = cursor.getString(cursor.getColumnIndex("donationTypeTEXT"))
+                donationDescription = cursor.getString(cursor.getColumnIndex("donationDescription"))
+                val donation = Model.Donation(
+                    donationId = donationId,
+                    donatorName = donatorName,
+                    donationType = donationType,
+                    donationDescription = donationDescription
+                )
+                donationList.add(donation)
+            } while (cursor.moveToNext())
+        }
+        return donationList
+    }
+
+    //method to update data
+    fun updateDonation(donation: Model.Donation): Int {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put(KEY_ID, donation.donationId)
+        contentValues.put(KEY_DONATORNAME, donation.donatorName)
+        contentValues.put(KEY_DONATION_TYPE, donation.donationType)
+        contentValues.put(
+            KEY_DONATIONDESCRIPTION,
+            donation.donationDescription
+        )
+        val success = db.update(
+            TABLE_DONATION,
+            contentValues,
+            "donationIdINTEGER=" + donation.donationId,
+            null
+        )
+        db.close()
+        return success
+    }
+
+    //method to delete data
+    fun deleteDonation(donation: Model.Donation): Int {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put(KEY_ID, donation.donationId)
+        val success = db.delete(TABLE_DONATION, "donationIdINTEGER=" + donation.donationId, null)
+        db.close()
+        return success
+    }
+    // USERDONATION TABLE CONTENT ENDS HERE
+
 
     //INSERTION OF ROW
     fun addUser(user: UserClass): Long {
@@ -64,47 +163,9 @@ class DatabaseHandler(context: Context):
         contentValues.put(KEY_PINCODE, user.pincode)
         val success = db.insert(TABLE_USER_DATA, null, contentValues)
         db.close()
-        return success // closing database connection
+        return success
     }
 
-    // to voew
-    fun viewUser(): ArrayList<UserClass> {
-        val userList: ArrayList<UserClass> = ArrayList<UserClass>()
-        val selectQuery = "SELECT* FROM $TABLE_USER_DATA"
-        val db = this.readableDatabase
-        var cursor:
-                Cursor? = null
-        try {
-            cursor = db.rawQuery(selectQuery, null)
-        } catch (e: SQLiteException) {
-            db.execSQL(selectQuery)
-            return ArrayList()
-        }
-
-        if (cursor.moveToFirst()) {
-            do {
-                var id = cursor.getInt(cursor.getColumnIndex(KEY_ID))
-                var name = cursor.getString(cursor.getColumnIndex(KEY_NAME))
-                var email = cursor.getString(cursor.getColumnIndex(KEY_EMAIL))
-                var password = cursor.getString(cursor.getColumnIndex(KEY_PASS))
-                var phoneNumber = cursor.getString(cursor.getColumnIndex(KEY_PHONE))
-                var userType = cursor.getString(cursor.getColumnIndex(KEY_USER))
-                var address = cursor.getString(cursor.getColumnIndex(KEY_ADDRESS))
-                var city = cursor.getString(cursor.getColumnIndex(KEY_CITY))
-                var state = cursor.getString(cursor.getColumnIndex(KEY_STATE))
-                var country = cursor.getString(cursor.getColumnIndex(KEY_COUNTRY))
-                var pincode = cursor.getString(cursor.getColumnIndex(KEY_PINCODE))
-
-                val user = UserClass(
-                    id = id, name = name, email = email, password = password, phoneNumber = phoneNumber,
-                    userType = userType, address = address,
-                    city = city, state = state, country = country, pincode = pincode
-                )
-                userList.add(user)
-            } while (cursor.moveToNext())
-        }
-        return userList
-    }
 
     fun checkUser(): ArrayList<UserClass> {
         val userList: ArrayList<UserClass> = ArrayList<UserClass>()
@@ -134,9 +195,17 @@ class DatabaseHandler(context: Context):
                 var pincode = cursor.getString(cursor.getColumnIndex(KEY_PINCODE))
 
                 val user = UserClass(
-                    id = id, name = name, email = email, password = password, phoneNumber = phoneNumber,
-                    userType = userType, address = address,
-                    city = city, state = state, country = country, pincode = pincode
+                    id = id,
+                    name = name,
+                    email = email,
+                    password = password,
+                    phoneNumber = phoneNumber,
+                    userType = userType,
+                    address = address,
+                    city = city,
+                    state = state,
+                    country = country,
+                    pincode = pincode
                 )
                 userList.add(user)
             } while (cursor.moveToNext())
@@ -189,6 +258,7 @@ class DatabaseHandler(context: Context):
         }
         return false
     }
+
     fun checkUserData(phoneNumber: String, password: String): Boolean {
         val columns = arrayOf(KEY_ID)
         val db = this.readableDatabase
@@ -209,8 +279,8 @@ class DatabaseHandler(context: Context):
         if (cursorCount > 0)
             return false
 
-            return true
-        }
+        return true
+    }
 
 }
 

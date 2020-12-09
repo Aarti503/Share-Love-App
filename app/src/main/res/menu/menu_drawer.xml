@@ -7,11 +7,25 @@
         android:title="@string/dashboard"
         android:icon="@drawable/ic_dashboard"
         />
+        <item
+            android:id="@+id/myProfile"
+            android:icon="@drawable/action_person"
+            android:title="My Profile" />
     <item
         android:id="@+id/aboutus"
         android:title="@string/aboutus"
         android:icon="@drawable/ic_aboutus"
         />
+        <item
+            android:id="@+id/login"
+            android:title="@string/login"
+            android:icon="@drawable/ic_login"
+            />
+        <item
+            android:id="@+id/SignUp"
+            android:title="@string/Sign_in"
+            android:icon="@drawable/ic_signup"
+            />
 
 
 </group>
